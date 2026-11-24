@@ -1,0 +1,148 @@
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --text: #1c2230;
+  --muted: #6b7385;
+  --border: #e2e5ec;
+  --accent: #2f5bea;
+  --accent-text: #ffffff;
+  --ok: #1f8a4c;
+  --ok-bg: #e5f5ec;
+  --warn: #b25b00;
+  --warn-bg: #fff1e0;
+  --danger: #c2321f;
+  --sidebar: #141a29;
+  --sidebar-text: #c9cfdc;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #10141d;
+    --surface: #1a2030;
+    --text: #e6e9f0;
+    --muted: #98a0b3;
+    --border: #2b3346;
+    --accent: #6d8cff;
+    --accent-text: #0b1020;
+    --ok: #4cc884;
+    --ok-bg: #173325;
+    --warn: #ffae57;
+    --warn-bg: #3a2a16;
+    --danger: #ff7a66;
+    --sidebar: #0b0f18;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+a { color: var(--accent); }
+h1, h2, h3 { margin: 0 0 12px; }
+
+button {
+  background: var(--accent);
+  color: var(--accent-text);
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: default; }
+button.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+button.danger { background: var(--danger); color: #fff; }
+button.small { padding: 5px 10px; font-size: 12px; }
+button.link { background: none; color: var(--sidebar-text); text-align: left; padding: 8px 12px; }
+
+input, select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+}
+label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+label.inline { flex-direction: row; align-items: center; gap: 6px; }
+
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 210px;
+  background: var(--sidebar);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sidebar .brand { color: #fff; font-weight: 700; font-size: 20px; padding: 0 12px 16px; }
+.sidebar a { color: var(--sidebar-text); text-decoration: none; padding: 8px 12px; border-radius: 6px; }
+.sidebar a.active { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.content { flex: 1; padding: 24px; min-width: 0; }
+
+.page-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 4px; }
+.stat-value { font-size: 30px; font-weight: 700; }
+.stat.warn .stat-value { color: var(--warn); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+.form-col { display: flex; flex-direction: column; gap: 10px; }
+
+.feed { list-style: none; padding: 0; margin: 0; }
+.feed li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px; border-left: 3px solid var(--ok); margin-bottom: 6px; background: var(--bg); border-radius: 6px; }
+.feed li.unknown { border-left-color: var(--warn); }
+
+.bars { display: flex; align-items: flex-end; gap: 10px; height: 180px; }
+.bar-col { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; font-size: 11px; color: var(--muted); }
+.bar { width: 100%; background: var(--accent); border-radius: 4px 4px 0 0; min-height: 2px; }
+
+table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: block; overflow-x: auto; }
+thead, tbody, tr { width: 100%; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 14px; white-space: nowrap; }
+th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; }
+
+.pill { padding: 3px 10px; border-radius: 999px; font-size: 12px; background: var(--bg); color: var(--muted); }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+
+.search { margin-bottom: 12px; max-width: 420px; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.filters > * { width: auto; }
+.pager { justify-content: center; margin-top: 12px; }
+
+.error { background: var(--warn-bg); color: var(--danger); padding: 10px; border-radius: 8px; margin: 8px 0; }
+.notice { background: var(--ok-bg); color: var(--ok); padding: 10px; border-radius: 8px; margin: 8px 0; }
+
+.details { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.details > div { display: flex; flex-direction: column; gap: 2px; }
+
+.capture { display: flex; flex-direction: column; gap: 8px; }
+.webcam { max-width: 100%; border-radius: 10px; background: #000; }
+.cam-error { padding: 24px; border: 1px dashed var(--border); border-radius: 10px; color: var(--muted); }
+.thumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+.thumbs img { width: 70px; height: 52px; object-fit: cover; border-radius: 6px; transform: scaleX(-1); }
+
+.center-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.login { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 12px; }
+
+.kiosk { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 16px; text-align: center; }
+.kiosk-result { font-size: 26px; font-weight: 600; min-height: 40px; color: var(--muted); }
+.kiosk-result.recognized { color: var(--ok); }
+.kiosk-result.unknown { color: var(--warn); }
+
+@media (max-width: 720px) {
+  .layout { flex-direction: column; }
+  .sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; padding: 10px 16px; }
+  .sidebar .brand { width: 100%; padding: 0 0 6px; }
+  .content { padding: 16px; }
+}
