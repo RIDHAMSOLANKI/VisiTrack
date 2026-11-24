@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Secrets
+.env
+*.env.local
+
+# Data and trained outputs (large / personal). Face data must never be committed.
+data/
+artifacts/*
+!artifacts/.gitkeep
+ml-service/gallery/
